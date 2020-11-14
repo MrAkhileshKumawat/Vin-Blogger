@@ -116,7 +116,6 @@ module.exports = class UserServices{
     async usernameValidator(username){
         let regexUsername = /^(?=[a-zA-Z0-9._]{1,20}$)[^_.].*[^_.]$/;
         if(username.match(regexUsername)){
-            console.log("app")
             return true
         }else{
             return false
