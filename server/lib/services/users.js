@@ -96,6 +96,7 @@ module.exports = class UserServices{
     }
 
     async nameValidate(name) {
+        console.log("name",name)
         let regexName = /^[a-zA-Z ]{2,30}$/;
         if(await name.match(regexName)){
             return true
@@ -105,8 +106,11 @@ module.exports = class UserServices{
     }
 
     async emailValidator(email){
+        console.log(email)
+
         let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (email.length<=30 && email.match(regexEmail)) {
+            console.log("email",email)
             return true; 
         } else {
             return false; 
@@ -126,7 +130,7 @@ module.exports = class UserServices{
     async passwordValidate(password) {
         // let regexPassword = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,10})/;
         let regexPassword = /^(?=[a-zA-Z0-9._@]{6,10}$)/
-        if(password.match(regexPassword)){
+        if(await password.match(regexPassword)){
             return true
         }else{
             return false

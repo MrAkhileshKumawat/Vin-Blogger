@@ -5,6 +5,7 @@ const UserServices = require("../services/users")
 const userServices = new UserServices();
 async function formValidate (req, res , next) {
     const {name , username , email , password ,confirm_password} = req.body
+    console.log(req.body)
     if(await userServices.nameValidate(name)){
         if(await userServices.usernameValidator(username)){
             if(await userServices.emailValidator(email)){
@@ -40,20 +41,36 @@ async function profileUpdateValidation(req,res,next){
     const {name,username,password} = req.body
     if(name!=undefined){
         if(await userServices.nameValidate(name)){
-            console.log("name validate")
+            console.log("validate name");
         }else{res.json({error:"Invalid name",message:"Name contains only alphabets"})}
-    }else if(username!=undefined){
+    }if(username!=undefined){
         if(await userServices.usernameValidator(username)){
-            console.log("Username validate")
+            console.log("validate username");
         }else{res.json({error:"Invalid username",message:"length should be 1 to 20"})}
-    }else if(password!=undefined){
-        if(await userServices.passwordValidate(password)){
-            console.log("Password validate")
+    }if(password!=undefined){
+        if(await userServices.passwordValidate(password)){  
+            console.log("validate password")
         }else{
             res.json({error:"Invalid password",message:"Password length should be 6 to 10"})
         }
     }
     next()
 }
-module.exports = {formValidate , loginValidate , profileUpdateValidation}
 
+async function blogCreateValidation(req,res,next){
+    const {title,article}=req.body
+    if(title!=undefined && article!==undefined){
+        let TITLE= title.trim()
+        let STORY = article.trim()
+        // console.log(title)
+        if(TITLE.length>10 && STORY.length>20){
+            next()
+        }else{
+            res.send("length should be greater than 20")
+        }
+    }else{
+        res.send("Title and article are required")
+    }
+
+}
+module.exports = {formValidate , loginValidate , profileUpdateValidation , blogCreateValidation}

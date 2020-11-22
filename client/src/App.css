@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
+
+
+
+
+.header{
+  width: 400px;
+  background-color: blue;
+  height: 70px;
+  font-size: 40px;
+  text-align: center;
+  align-items: center;
+  color: antiquewhite;
+}

@@ -10,7 +10,7 @@ class Blog extends Model{
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['title','story'],
+      required: ['title','article'],
       properties: {
         id: { type: 'integer' },
         title:{type:'string',minLength:1},

@@ -28,9 +28,10 @@ module.exports =(users,jwt,isverify)=>{
             }else{
                 delete details.confirm_password
                 let user = await userServices.findOrCreate(details)
-                // console.log("error",user)
+                console.log("error",user)
                 if(user){
-                    res.send({success:"User Inserted Successfully"})
+                    console.log("afdlk")
+                    res.send("User Inserted Successfully")
                 }else{
                     next(error =new Error("User Alredy Exists",409),error.status=409)                        
                 }
@@ -52,13 +53,12 @@ module.exports =(users,jwt,isverify)=>{
                 user = user[0]
                 var userData={
                         id:user.id,
-                        username:user.username,
                         email:user.email
                     }
                     // console.log(userData)
                     let token = jwt.sign(userData,secret_key)
                     res.cookie("jwt",token)
-                    res.send("Login Successfully")
+                    res.json({success:"Login Successfully",token:token})
             }else if(user=="409"){
                 next(error = new Error("Invalid Password"),error.status=409)
             }else{

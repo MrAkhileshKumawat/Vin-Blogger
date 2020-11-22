@@ -3,9 +3,11 @@ const app = express();
 const knex = require('./lib/config/knex');
 const passport = require("passport");
 const { types } = require('pg');
+const cors = require('cors')
 
 app.use(express.json());
 app.use(passport.initialize())
+app.use(cors())
 
 
 app.get('/', (req, res) => {
@@ -16,9 +18,7 @@ app.get("/loginFailed",(req,res)=>{
     res.send("You profile is already exists So Login Please")
 })
 
-app.get("/home",(req,res)=>{
-    res.send("Welcome to our Our App!")
-})
+
 
 /* router controller  */
 const controller = require("./lib/routes/controller")

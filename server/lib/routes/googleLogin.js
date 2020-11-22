@@ -2,6 +2,8 @@ const e = require("express");
 const {googleAuth} = require("../passportStrategy/googleStrategy")
 const UserServices = require("../services/users")
 const userServices = new UserServices();
+const jwt=require("jsonwebtoken")
+const secret_key = process.env.JWT_SECRET_KEY
 
 module.exports=((passport,googleLogin)=>{
     const googleStrategy = googleAuth(passport)
@@ -16,10 +18,16 @@ module.exports=((passport,googleLogin)=>{
             async function(req,res,next){
                 const userDetails = req.user
                 try {
-                    let login = await userServices.googleLogin(userDetails)
-                    // console.log("login",login)
-                    if(login!="409" && login!=false){
-                        res.redirect("/home")
+                    let user = await userServices.googleLogin(userDetails)
+                    // console.log("user",user)
+                    if(user!="409" && user!=false){
+                        var userData={
+                            id:user.id,
+                            email:user.email
+                        }
+                        let token = jwt.sign(userData,secret_key)
+                        res.cookie("jwt",token)
+                        res.json({success:"Login Successfully",token:token})
                     }else{
                         res.send("User already exists You can login with you password")
                     }
