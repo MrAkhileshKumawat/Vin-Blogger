@@ -31,9 +31,9 @@ module.exports =(users,jwt,isverify)=>{
                 console.log("error",user)
                 if(user){
                     console.log("afdlk")
-                    res.send("User Inserted Successfully")
+                    res.status(200).json({message:"Your Account is Created"})
                 }else{
-                    next(error =new Error("User Alredy Exists",409),error.status=409)                        
+                    next(error =new Error("Account already exists",409),error.status=409)                        
                 }
             }   
         } catch (error) {
@@ -44,9 +44,10 @@ module.exports =(users,jwt,isverify)=>{
 
     users.post("/login",loginValidate,async(req,res,next)=>{
         try {
-            const userDetails = await userServices.setDefault(req.body)
+            console.log(req.body)
+            // const userDetails = await userServices.setDefault(req.body)
             // console.log("user",userDetails)
-            let user = await userServices.checkUserLogin(userDetails)
+            let user = await userServices.checkUserLogin(req.body)
             // console.log(user)
             if(user!="409" && user!=false){
                 // console.log(user)
@@ -58,11 +59,11 @@ module.exports =(users,jwt,isverify)=>{
                     // console.log(userData)
                     let token = jwt.sign(userData,secret_key)
                     res.cookie("jwt",token)
-                    res.json({success:"Login Successfully",token:token})
+                    res.json({message:"Login Successfully",token:token})
             }else if(user=="409"){
                 next(error = new Error("Invalid Password"),error.status=409)
             }else{
-                next(error = new Error("User Not Found"),error.status = 404)
+                next(error = new Error("account doesn't exists"),error.status = 404)
             }
         } catch (error) {
             console.log(error)
@@ -75,12 +76,12 @@ module.exports =(users,jwt,isverify)=>{
         if (detail!=undefined && detail.length !== 0){
             if(req.body.email==undefined){
                 await userServices.update(decode.email,req.body)
-                res.send("Profile Updated!")
+                res.json({message:"Profile Updated successfully"})
             }else{
-                res.send("You Can't change email")
+                res.send({message:"You cannot change email"})
             }
         }else{
-            res.send("Profile Not Found !")
+            res.status(404).json({message:"Profile Not Found"})
         }
     })
 }

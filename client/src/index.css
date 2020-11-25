@@ -1,18 +1,27 @@
-/* body {
+@import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
+
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ 
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-} */
+}
 
 .footer{
-  height:60px;
+  /* height:60px; */
   background-image:linear-gradient(to right,#a8c0ff,#65C7F7,#3F5EFB)
 }
+.footer-div{
+  max-height: 100%;
+  position: relative;
+  background-color: black;
+}
+

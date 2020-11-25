@@ -47,6 +47,22 @@ module.exports = class UserServices{
 
 
     async checkUserLogin(userDetails){
+        console.log(userDetails)
+        let {emailOrUsername,password,provider}=userDetails
+        const user = await User.query().select("*").where("email",emailOrUsername).orWhere({"username":emailOrUsername})
+        if(user.length){
+            if((emailOrUsername==user[0].email || emailOrUsername == user[0].username) && (password==user[0].password || user[0].provider==provider)){
+                return user // found
+            }else{
+                return "409"
+            }
+        }else{
+            return false
+        }
+    }
+
+    async checkGoogleUserLogin(userDetails){
+        // console.log(userDetails)
         let {email,username,password,provider}=userDetails
         const user = await User.query().select("*").where("email",email).orWhere({"username":username})
         if(user.length){
@@ -81,7 +97,7 @@ module.exports = class UserServices{
 
     async googleLogin(userDetails){
         userDetails.username = userDetails.email.split("@")[0]
-        let user = await this.checkUserLogin(userDetails)
+        let user = await this.checkGoogleUserLogin(userDetails)
         if(user.length){
             console.log("Profile Updated")
             delete userDetails.username

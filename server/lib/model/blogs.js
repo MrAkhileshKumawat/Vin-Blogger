@@ -18,6 +18,23 @@ class Blog extends Model{
       }
     };
   }
+
+  static get relationMappings() {
+    const Users = require('./users')
+    return {
+        users: {
+            relation: Model.BelongsToOneRelation,
+            modelClass: Users,
+            join: {
+                from: 'blog.users_id',
+                to: 'users.id'
+            }
+        }
+    }
 }
+}
+
+
+
 
 module.exports = Blog;

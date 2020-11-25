@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Castoro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Texturina:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.team{
+    font-family: 'Lobster', cursive;
+}
+.about-us{
+    font-family: 'Texturina', serif;
+
+}
+.navbar-brand{
+    font-family: 'Castoro', serif;
+
+}
+.pad{
+    padding:1px 15px 15px
+}
+
+.card{
+    padding:5px 40px 40px
+}
+
+/* .one{
+    border-style: solid;
+    border-width : 5px;
+    border-color : lightblue
+} */
+
+/* .two{
+    border-style: solid;
+    border-width : 5px;
+    border-color : lightblue
+} */
+
+.red  {
+    background-image: linear-gradient(to left,#C33764 , #1CB5E0 );
+
+}
+
+.navbar-color {
+    background-image: linear-gradient(to left,#d115b2 , #1CB5E0 );
+}
+
+#heading{
+    color: Black;
+}
+
+
+
+.upper{
+    background-image: linear-gradient(to left,#C33764 , #1CB5E0 );
+}
+
+.rounded-circle{
+    width: 50%;
+}
+
+.menu_active{
+    font-weight: bold;
+    border-bottom: 1px solid purple;
+
+}
+
+.about{
+    object-fit: cover;
+}
+
+.type{
+    height: 250px;
+    /* background-color : rgb(98, 146, 235) */
+    background-image: linear-gradient(to left,#C33764 , #1CB5E0 );
+
+}
+.main-footer{
+    color: white;
+    /* background-color: #dc3545; */
+    padding-top: 3em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* news page */
+
+.Header {
+    text-align: center;
+    color: black;
+    background-color:#2eb8b8;
+    padding: 6px;
+  }
+  
+  .container2 {
+    display: flex;
+    margin: 0px, 20px, 0px, 20px;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 8px 15px rgb(0, 174, 255);
+    border-radius: 25px 25px 25px;
+    margin-bottom: 40px;
+    background-color: white;
+  }
+  
+  .img-rounded {
+    width: 330px;
+    height:  250px;
+    border-radius: 25px 25px 25px;
+  }
+  
+  .Title {
+    color: red;
+    margin-left: 3%;
+  }
+  
+  p.title {
+    color: green;
+    font-size: 170%;
+    
+  }
+  
+  p.description {
+    color: black;
+    font-size: 110%;
+  }
+  
+  p.author {
+    color: blue;
+    font-size: 100%;
+  }
+  
+  .button {
+      display:flex;
+      justify-content:center;
+      align-items: center;
+  }
+  
+  .time {
+    color: gray;
+  }
+  
+  @media screen and (max-width: 795px) {
+    .container2 {
+      display: block;
+      margin: 0px, 50px;
+      border: none;  
+    }
+  
+    img {
+      width: 310px;
+      height:  220px;
+      /* border-radius: 25px 25px 25px; */
+    }
+  
+    p.title {
+      font-size: 130%;
+    }
+    
+    p.description {
+      font-size: 110%;
+    }
+  
+    p.author {
+      font-size: 90%;
+    }
+  
+  }
+  
+
+
+  .md-social-btn .mbsc-ic {
+    float: left;
+}
+
+

@@ -1,16 +1,15 @@
 // import { getResourceUrl } from "../network/url-path";
 
-export const networkRequest = async (url, method) => {
+export const networkRequest = async (url, method,body) => {
   console.log(url, "create");
   const res = await fetch(url, {
     method: method,
     headers: {
       accept: "application/json",
       "Content-Type": "application/json",
-    //   authorization:
-        // "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkdTMTI0MTUxMjM0MTI0MzIiLCJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE1MTEyODcwNzd9.9e8yq-jtWp0F6Rynai3x--Cbm76Y_oYqGAS1uTglcMI",
+      Authorization:localStorage.getItem('token'),
     },
-    // body: JSON.stringify(reqObj),
+    body: JSON.stringify(body),
   });
 //   console.log(res.json(),"res.json();")
   return res.json();

@@ -16,7 +16,21 @@ class BlogServices{
     }
 
     async getBlogById(id){
-        return await Blog.query().where("id",id)
+        return await Blog.query()
+        .withGraphFetched('users')
+        .where("id",id)
+    }
+
+    async getBlogs(){
+        return await Blog.query().withGraphFetched("users.['name']")
+    }
+
+    async search(query_string){
+        return await Blog.query()
+        .where('title','like','%' + query_string)
+        .orWhere('title','like', query_string + '%')
+        .orWhere('title','like','%'+ query_string + '%')
+        .orWhere('title',query_string)
     }
 }
 module.exports = BlogServices;

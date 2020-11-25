@@ -47,11 +47,22 @@
 
 
 .header{
-  width: 400px;
+  /* width: 400px;s */
   background-color: blue;
   height: 70px;
   font-size: 40px;
   text-align: center;
   align-items: center;
   color: antiquewhite;
+}
+
+
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.content-wrap {
+  flex: 1;
 }
